@@ -12,6 +12,7 @@ class CategorySeeder extends Seeder
         Category::insert([
             [
                 'name' => 'Signature',
+                'slug' => 'signature',
                 'description' => 'Menu andalan Kopi 1815 dengan racikan khas.',
                 'image' => null,
                 'created_at' => now(),
@@ -19,6 +20,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'name' => 'Coffee Based',
+                'slug' => 'coffee-based',
                 'description' => 'Minuman kopi klasik: espresso, latte, cappuccino, dll.',
                 'image' => null,
                 'created_at' => now(),
@@ -26,6 +28,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'name' => 'Non Coffee',
+                'slug' => 'non-coffee',
                 'description' => 'Minuman selain kopi untuk semua kalangan.',
                 'image' => null,
                 'created_at' => now(),

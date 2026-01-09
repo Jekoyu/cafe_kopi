@@ -23,6 +23,17 @@ Route::view('/about', 'about')->name('about');
 
 Route::view('/contact', 'contact')->name('contact');
 
+// Public Menu Page
+Route::get('/menu', function () {
+    $categories = \App\Models\Category::with([
+        'menus' => function ($q) {
+            $q->orderBy('name');
+        }
+    ])->orderBy('name')->get();
+
+    return view('menu.index', compact('categories'));
+})->name('menu.public');
+
 
 /*
 |--------------------------------------------------------------------------

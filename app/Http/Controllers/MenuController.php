@@ -9,19 +9,13 @@ use Illuminate\Http\Request;
 class MenuController extends Controller
 {
     /**
-     * Tampilkan daftar menu (GROUP BY CATEGORY)
+     * Admin: Daftar menu dengan table CRUD
      */
     public function index()
     {
-        // ambil kategori + menu di dalamnya (Eloquent ORM)
-        // urutin category & menu biar rapi
-        $categories = Category::with(['menus' => function ($q) {
-                $q->orderBy('name');
-            }])
-            ->orderBy('name')
-            ->get();
+        $menus = Menu::with('category')->orderBy('name')->get();
 
-        return view('menu.index', compact('categories'));
+        return view('admin.menu.index', compact('menus'));
     }
 
     /**
@@ -41,10 +35,10 @@ class MenuController extends Controller
     {
         $validated = $request->validate([
             'category_id' => 'required|exists:categories,id',
-            'name'        => 'required|string|max:100',
-            'price'       => 'required|string|max:50',
+            'name' => 'required|string|max:100',
+            'price' => 'required|integer|min:0',
             'description' => 'nullable|string',
-            'image'       => 'nullable|string',
+            'image' => 'nullable|string',
         ]);
 
         Menu::create($validated);
@@ -71,10 +65,10 @@ class MenuController extends Controller
     {
         $validated = $request->validate([
             'category_id' => 'required|exists:categories,id',
-            'name'        => 'required|string|max:100',
-            'price'       => 'required|string|max:50',
+            'name' => 'required|string|max:100',
+            'price' => 'required|integer|min:0',
             'description' => 'nullable|string',
-            'image'       => 'nullable|string',
+            'image' => 'nullable|string',
         ]);
 
         $menu->update($validated);
