@@ -9,7 +9,7 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 
 # Install dependencies
-RUN npm ci --ignore-scripts
+RUN npm install --ignore-scripts
 
 # Copy source files for build
 COPY resources ./resources
