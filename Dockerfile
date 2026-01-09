@@ -106,12 +106,12 @@ RUN rm -rf \
   package-lock.json \
   README.md
 
-# Create necessary directories
+# Create necessary directories with proper permissions
 RUN mkdir -p storage/framework/{sessions,views,cache} \
   && mkdir -p storage/logs \
   && mkdir -p bootstrap/cache \
   && chown -R www:www storage bootstrap/cache \
-  && chmod -R 775 storage bootstrap/cache
+  && chmod -R 777 storage bootstrap/cache
 
 # Copy nginx config
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
