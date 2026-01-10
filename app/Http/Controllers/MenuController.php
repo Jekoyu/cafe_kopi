@@ -25,7 +25,7 @@ class MenuController extends Controller
     {
         $categories = Category::orderBy('name')->get();
 
-        return view('menu.create', compact('categories'));
+        return view('admin.menu.create', compact('categories'));
     }
 
     /**
@@ -55,7 +55,7 @@ class MenuController extends Controller
     {
         $categories = Category::orderBy('name')->get();
 
-        return view('menu.edit', compact('menu', 'categories'));
+        return view('admin.menu.edit', compact('menu', 'categories'));
     }
 
     /**

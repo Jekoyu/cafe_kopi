@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdminDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,9 @@ Route::get('/menu', function () {
 | (nanti bisa ditambah middleware auth)
 */
 Route::prefix('admin')->group(function () {
+
+    // DASHBOARD
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
     // MENU CRUD
     Route::resource('menu', MenuController::class);
