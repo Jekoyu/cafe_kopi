@@ -37,9 +37,22 @@
   </nav>
 
   <div class="sidebar-footer">
+    <div class="user-info">
+      <i class="bi bi-person-circle"></i>
+      <span>{{ Auth::user()->name ?? 'Admin' }}</span>
+    </div>
+
     <a href="{{ route('home') }}" class="btn-back-site">
       <i class="bi bi-arrow-left"></i>
       Back to Site
     </a>
+
+    <form action="{{ route('admin.logout') }}" method="POST" style="margin-top: 10px;">
+      @csrf
+      <button type="submit" class="btn-logout">
+        <i class="bi bi-box-arrow-right"></i>
+        Logout
+      </button>
+    </form>
   </div>
 </aside>

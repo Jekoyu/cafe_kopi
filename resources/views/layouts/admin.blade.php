@@ -155,6 +155,42 @@
       color: white;
     }
 
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .user-info i {
+      font-size: 1.5rem;
+      color: var(--coffee-accent);
+    }
+
+    .btn-logout {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px;
+      background: rgba(220, 38, 38, 0.1);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      border-radius: 8px;
+      color: #fca5a5;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-logout:hover {
+      background: rgba(220, 38, 38, 0.2);
+      color: #fecaca;
+    }
+
     /* ========== MAIN CONTENT ========== */
     .admin-main {
       margin-left: var(--sidebar-width);

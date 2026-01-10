@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\AdminAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,12 +39,22 @@ Route::get('/menu', function () {
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN PANEL
+| ADMIN AUTHENTICATION
 |--------------------------------------------------------------------------
-| Menu & Categories Management
-| (nanti bisa ditambah middleware auth)
 */
 Route::prefix('admin')->group(function () {
+    Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
+    Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN PANEL (Protected)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('admin')->middleware('auth')->group(function () {
 
     // DASHBOARD
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
